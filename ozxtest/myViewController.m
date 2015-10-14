@@ -7,14 +7,12 @@
 //
 #define  DEVICE_WIDTH [UIScreen mainScreen].bounds.size.width
 #import "myViewController.h"
-#import "SUScanView.h"
 #import "ozxDeview.h"
 
 @interface myViewController ()
 {
     CGFloat navH;
     CGFloat scanViewH;
-    SUScanView * scanView;
     ozxDeview * oview ;
 }
 @property (nonatomic,strong) UIButton * btn1;
@@ -29,31 +27,17 @@
     
     navH = 64;
     scanViewH = 120;
-    UIView * view = [[UIView alloc] initWithFrame:CGRectMake(0, 300, 400, 44)];
-    [self.view addSubview: view];
-    view.backgroundColor = [UIColor redColor];
-    
+
     oview = [[ozxDeview alloc] init];
-
+    oview.frame = CGRectMake(0, 64, 100, 100);
     [self.view addSubview:oview];
-    
-}
-
-
-#pragma mark - 设置月排行
-- (void)setTheScanView{
-    scanView = [[SUScanView alloc] initWithDelegate:self];
-    scanView.frame = CGRectMake(DEVICE_WIDTH-80, navH, 84, scanViewH);
-    [self.view addSubview:scanView];
-//    [self.view bringSubviewToFront:_headPlaygroundview];
-//    [self.view bringSubviewToFront:_headView];
     
 }
 
 -(void)viewWillLayoutSubviews{
 
     [super viewWillLayoutSubviews];
-    oview.frame = CGRectMake(0, 64, 100, 100);
+    
 }
 
 - (void)didReceiveMemoryWarning {
